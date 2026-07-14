@@ -1,18 +1,19 @@
-import CssBaseline from '@mui/material/CssBaseline';
-import { createBrowserRouter } from "react-router";
-import { RouterProvider } from "react-router/dom";
-import routes from "./routes.jsx";
-
-const router = createBrowserRouter(routes);
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./routes";
+import { AuthProvider } from "./contexts/AuthContext";
+import ThemeProvider from "./contexts/ThemeProvider";
 
 function App() {
-
   return (
-    <>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </>
-  )
+    <AuthProvider>
+      <BrowserRouter>
+        <ThemeProvider>
+          <Router />
+        </ThemeProvider>
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
